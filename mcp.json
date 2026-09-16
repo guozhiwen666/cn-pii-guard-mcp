@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "cn-pii-guard": {
+      "command": "python",
+      "args": ["server.py"],
+      "cwd": ".",
+      "env": {}
+    }
+  }
+}
