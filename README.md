@@ -107,6 +107,13 @@ pip install -r requirements.txt
 python server.py
 ```
 
+使用 uv 的话：
+
+```bash
+uv sync
+uv run server.py
+```
+
 客户端接入配置见上方 [MCP 服务配置](#mcp-服务配置server-config) 一节。
 
 试一句：
@@ -165,11 +172,16 @@ from mcp.server.mcpserver import MCPServer
 - 脱敏结果不可逆（`hash` 策略除外，它按原文哈希，可跨表关联）。
 - 本服务完全在本地进程内计算，不上传、不落盘、不联网。
 
+## 上架记录
+
+- [ ] 魔搭 MCP 广场 —— 托管类型：**仅本地可用**
+- [ ] 官方 MCP Registry
+
+### 为什么托管类型选「仅本地可用」
+
+本服务零密钥、不访问网络，全部计算在本地进程内完成，没有远程托管的必要。
+魔搭对选择「仅本地可用」的服务会跳过自动部署检测，直接在广场上分发安装配置。
+
 ## 免责
 
 `generate_test_identifiers` 生成的全部是合成数据，不对应任何真实个人或企业，仅供测试使用。
-
-## 上架记录
-
-- [ ] 魔搭 MCP 广场（GitHub 导入 + 可托管部署）
-- [ ] 官方 MCP Registry
