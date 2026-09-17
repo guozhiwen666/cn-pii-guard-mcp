@@ -8,10 +8,13 @@
 
 **传输类型：STDIO**。本地进程内运行，零密钥、零环境变量、不访问网络。
 
+以下是本服务的 MCP 服务配置：
+
 ```json
 {
   "mcpServers": {
     "cn-pii-guard": {
+      "type": "stdio",
       "command": "python",
       "args": ["server.py"],
       "env": {
