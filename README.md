@@ -4,6 +4,43 @@
 
 给 AI Agent 一个"数据合规"的手：把一段日志、工单或数据库导出丢进来，它告诉你里面有哪些敏感信息、**哪些是真的合法、哪些只是长得像**，并按要求脱敏后返回。
 
+## MCP 服务配置（Server Config）
+
+**传输类型：STDIO**。本地进程内运行，零密钥、零环境变量、不访问网络。
+
+```json
+{
+  "mcpServers": {
+    "cn-pii-guard": {
+      "command": "python",
+      "args": ["server.py"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}
+```
+
+运行前安装依赖：
+
+```bash
+pip install -r requirements.txt
+```
+
+依赖只有一项：`mcp>=2.2.0`。
+
+### 可托管部署（SSE）
+
+如需远程托管，改用 SSE 传输启动：
+
+```bash
+python server.py --transport sse --host 0.0.0.0 --port 8000
+```
+
+监听 `0.0.0.0`，端口优先读取 `PORT` 环境变量，未设置时默认 `8000`。
+本服务无需任何鉴权配置。
+
 ## 为什么做这个
 
 翻一遍魔搭 MCP 广场会发现一件事：上架的数千个服务里，绝大多数是"大厂 API 包装"——地图、搜索、支付、图像生成、金融数据、法律数据、钉钉办公。它们有几个共同点：要申请密钥、要授权、要计费、要联网。
@@ -64,26 +101,10 @@ validate_identifier("id_card", "110105194912310021")   # valid: false，校验�
 
 ```bash
 pip install -r requirements.txt
-
-# 本地客户端（stdio）
 python server.py
-
-# 魔搭托管部署（SSE）
-python server.py --transport sse --host 0.0.0.0 --port 8000
 ```
 
-客户端配置（`mcp.json`）：
-
-```json
-{
-  "mcpServers": {
-    "cn-pii-guard": {
-      "command": "python",
-      "args": ["server.py"]
-    }
-  }
-}
-```
+客户端接入配置见上方 [MCP 服务配置](#mcp-服务配置server-config) 一节。
 
 试一句：
 
