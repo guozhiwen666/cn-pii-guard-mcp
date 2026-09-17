@@ -1,6 +1,8 @@
 # cn-pii-guard-mcp
 
 > 中文敏感信息识别、校验与脱敏 MCP 服务。纯离线，零密钥，一条命令可用。
+>
+> 已上架 [魔搭 MCP 广场](https://modelscope.cn/mcp/servers/gzw1464/cn-pii-guard-mcp)
 
 给 AI Agent 一个"数据合规"的手：把一段日志、工单或数据库导出丢进来，它告诉你里面有哪些敏感信息、**哪些是真的合法、哪些只是长得像**，并按要求脱敏后返回。
 
@@ -174,7 +176,7 @@ from mcp.server.mcpserver import MCPServer
 
 ## 上架记录
 
-- [ ] 魔搭 MCP 广场 —— 托管类型：**仅本地可用**
+- [x] [魔搭 MCP 广场](https://modelscope.cn/mcp/servers/gzw1464/cn-pii-guard-mcp) —— 托管类型：**仅本地可用**
 - [ ] 官方 MCP Registry
 
 ### 为什么托管类型选「仅本地可用」
