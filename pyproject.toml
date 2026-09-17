@@ -1,7 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "cn-pii-guard-mcp"
 version = "0.1.0"
+description = "中文敏感信息识别、校验与脱敏 MCP 服务。Chinese PII detection, validation and masking."
+readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    "mcp>=2.2.0",
+keywords = [
+    "mcp",
+    "model-context-protocol",
+    "pii",
+    "privacy",
+    "redaction",
+    "data-masking",
+    "chinese",
 ]
+authors = [{ name = "guozhiwen666" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Natural Language :: Chinese (Simplified)",
+    "Topic :: Security",
+]
+dependencies = ["mcp>=2.2.0"]
+
+[project.urls]
+Homepage = "https://github.com/guozhiwen666/cn-pii-guard-mcp"
+Repository = "https://github.com/guozhiwen666/cn-pii-guard-mcp"
+Issues = "https://github.com/guozhiwen666/cn-pii-guard-mcp/issues"
+
+[project.scripts]
+cn-pii-guard-mcp = "server:main"
+
+[tool.setuptools]
+py-modules = ["server"]
+packages = ["cnpii"]

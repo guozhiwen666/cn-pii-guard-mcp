@@ -1,3 +1,5 @@
+<!-- mcp-name: io.github.guozhiwen666/cn-pii-guard-mcp -->
+
 # cn-pii-guard-mcp
 
 > 中文敏感信息识别、校验与脱敏 MCP 服务。纯离线，零密钥，一条命令可用。
