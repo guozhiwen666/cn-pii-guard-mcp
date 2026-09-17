@@ -14,6 +14,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 
 from mcp.server.mcpserver import MCPServer
 
@@ -184,8 +185,9 @@ def main() -> None:
         choices=["stdio", "sse", "streamable-http"],
         help="通信方式；本地客户端用 stdio，魔搭托管部署用 sse",
     )
-    parser.add_argument("--host", default="0.0.0.0")
-    parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--host", default=os.environ.get("HOST", "0.0.0.0"))
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8000)))
+
     args = parser.parse_args()
 
     if args.transport == "stdio":
